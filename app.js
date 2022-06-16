@@ -7,7 +7,7 @@ const connectMongo = require('connect-mongo')
 require('dotenv').config()
 const app = express()
 // Localhost: mongodb://localhost:27017/ecommerce 
-mongoose.connect(process.env.MONGO_URI , {
+mongoose.connect('mongodb+srv://spmarketing:spmarketing@cluster0.g07ofnm.mongodb.net/?retryWrites=true&w=majority' , {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -22,7 +22,7 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
-    store: connectMongo.create({ mongoUrl: process.env.MONGO_URI })
+    store: connectMongo.create({ mongoUrl:'mongodb+srv://spmarketing:spmarketing@cluster0.g07ofnm.mongodb.net/?retryWrites=true&w=majority' })
   }));
 
 app.use(express.Router())
