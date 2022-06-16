@@ -1,0 +1,49 @@
+<%- include('./partials/seller_header.ejs') %> 
+<div class="container mt-5">
+    <form action="/create" method="POST">
+        <h3 class="mb-3"><i class="fa-solid fa-feather-pointed "></i> Enter product details</h3>
+        <select class="form-select" aria-label="Default select example" name="category" required>
+            <option value="" selected>Choose a category</option>
+            <option value="table">Tables</option>
+            <option value="chair">Chairs</option>
+            <option value="sofa">Sofas</option>
+          </select>
+        <input type="text" name="name" class="form-control mt-3" placeholder="Enter product name" required>
+        <div class="input-group mb-3 mt-2">
+            <span class="input-group-text">₹</span>
+            <input type="number" class="form-control" aria-label="Amount" name="price" placeholder="Enter price of the product">
+          </div>
+        <textarea name="description" cols="30" rows="3" class="mt-3 form-control" placeholder="Describe about your product" required></textarea>
+        <!-- <input type="submit" class="btn btn-md btn-danger mt-3" value="Publish">  -->
+        <!-- <input type="text" name="image" class="form-control mt-3" placeholder="Enter image url" required> -->
+        <!-- <div class="input-group mb-3">
+            <input type="file" class="form-control" id="image" name="image">
+            <label class="input-group-text" for="image">Upload</label>
+          </div> -->
+          <br>
+          <input
+                type="hidden"
+                role="uploadcare-uploader"
+                data-public-key="dda4f420950c6716a5d7"
+                data-tabs="file camera url facebook gdrive gphotos"
+                class="form-control mt-2"
+                required
+            >
+            <input type="hidden" id="url" name="image" value="">
+            <br>
+        <button type="submit" class="btn btn-md btn-success mt-3"><i class="fa-solid fa-upload"></i> Publish</button>
+    </form>
+</div>
+<script>
+const widget = uploadcare.Widget("[role=uploadcare-uploader]");
+
+// listen to the "upload completed" event
+widget.onUploadComplete(fileInfo => {
+// get a CDN URL from the file info
+// console.log(fileInfo.uuid);
+// console.log(fileInfo.cdnUrl);
+document.getElementById('url').value = fileInfo.cdnUrl
+});
+</script>
+
+<%- include('./partials/seller_footer.ejs') %> 

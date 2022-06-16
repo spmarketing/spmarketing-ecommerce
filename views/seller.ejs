@@ -1,0 +1,30 @@
+<%- include('./partials/seller_header.ejs') %> 
+
+<div class="container mb-5">
+    <h1>Welcome <%= username %> </h1>
+    <h4>Your items</h4>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <% allItems.forEach(item => { %>
+        
+<div class="col">
+    <div class="card bg-dark text-white">
+        <img src="<%= item.image %> " class="card-img-top" alt="image">
+        <div class="card-body">
+          <h5 class="card-title">Product Name: <%= item.name %> </h5>
+          <p class="card-text">Description: <%= item.description %> </p>
+          <p class="card-text">Price: ₹<%= item.price %> </p>
+          <p class="card-text">Category: <%= item.category %> </p>
+          <a href="/edit/<%= item._id %> " class="btn btn-warning">Edit product details</a>
+          <a href="/delete/<%= item._id %> " class="btn btn-danger mt-2">Delete product</a>
+        </div>
+      </div>
+    </div>
+      <% }); %> 
+    
+    </div>
+    
+</div>
+
+
+<%- include('./partials/seller_footer.ejs') %> 

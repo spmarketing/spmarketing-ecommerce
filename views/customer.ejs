@@ -1,0 +1,23 @@
+<%- include('./partials/customer_header.ejs') %> 
+
+<div class="container">
+	<h1 class="text-center">All Products</h1>
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		<% items.forEach(item => { %>
+		<div class="col">
+		  <div class="card">
+			<img src="<%= item.image %> " class="card-img-top" alt="No image">
+			<div class="card-body">
+				<h5 class="card-title">Product Name: <%= item.name %> </h5>
+				<p class="card-text">Description: <%= item.description %> </p>
+				<p class="card-text">Price: ₹<%= item.price %> </p>
+				<p class="card-text">Category: <%= item.category %> </p>
+			</div>
+			<button class="btn btn-success">Buy</button>
+		  </div>
+		</div>
+		<% }); %> 
+	  </div>
+</div>
+
+<%- include('./partials/customer_footer.ejs') %> 
