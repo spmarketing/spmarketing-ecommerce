@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-light bg-light navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img src="https://cdn.pixabay.com/photo/2017/02/16/10/23/iceberg-2070977_1280.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             SP Marketing
           </a>
@@ -23,6 +23,11 @@
             Wrong credentials!! Try again..
           </div>
         <% } %> 
+        <% if(message) { %> 
+            <div class="alert alert-warning" role="alert">
+                Login to continue
+              </div>
+            <% } %> 
     <form action="/customer/login" method="POST">
         <h3>Customer Log In</h3>
         <input type="text" name="username" class="form-control mt-4" placeholder="Enter username" required>

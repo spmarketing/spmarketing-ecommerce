@@ -36,6 +36,7 @@ app.use(require('./routes/index'))
 app.use(require('./routes/auth'))
 app.use(require('./routes/create_item'))
 app.use(require('./routes/item'))
+app.use(require('./routes/cart'))
 
 
 

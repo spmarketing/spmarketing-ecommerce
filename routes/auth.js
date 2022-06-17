@@ -36,7 +36,8 @@ router.post('/customer/register',async (req, res) => {
 })
 router.get('/customer/login', (req, res) => {
     var incorrect = req.session.incorrect
-    res.render('login_customer', {incorrect: incorrect})
+    var message = req.session.message
+    res.render('login_customer', {incorrect: incorrect, message: message})
 })
 
 router.post('/customer/login', (req, res) => {
@@ -49,7 +50,7 @@ router.post('/customer/login', (req, res) => {
                     req.session.userId = user._id
                     console.log('Customer Username: ' + req.session.user_name)
                     console.log('Customer User id: '+ req.session.userId)
-                    res.redirect('/customer')
+                    res.redirect('/')
                 } else {
                     req.session.incorrect = true
                     res.redirect('/customer/login')
@@ -67,11 +68,11 @@ router.get('/customer/logout', (req, res) => {
             if(err) {
                 console.log(err)
             } else {
-                res.redirect('/customer/login')
+                res.redirect('/')
             }
         })
     } else {
-        res.redirect('/customer/login')
+        res.redirect('/')
     }
     
 })
@@ -142,11 +143,11 @@ router.get('/seller/logout', (req, res) => {
             if(err) {
                 console.log(err)
             } else {
-                res.redirect('/seller/login')
+                res.redirect('/')
             }
         })
     } else {
-        res.redirect('/seller/login')
+        res.redirect('/')
     }
     
 })
